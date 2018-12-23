@@ -29,3 +29,8 @@ services:
       - PUID=1000
     volumes:
       - ${HOMEBRIDGEPATH}:/homebridge
+volumes: 
+  ${NX584PLUGINPATH}:
+    external: true
+  ${HOMEBRIDGEPATH}:
+    external: true
