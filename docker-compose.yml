@@ -1,0 +1,31 @@
+version: "3.2"
+
+services:
+  pynx584:
+    container_name: pynx584
+    build: 
+      context: https://github.com/aficustree/pynx584.git#pluginWork:.docker
+    restart: unless-stopped
+    # uncomment volume if you wish to use plugin support
+    volumes:
+      - ${NX584PLUGINPATH}:/plugins
+    ports:
+      - 5007:5007
+    environment:
+      # Uncomment these as needed, depending on how you connect to the panel (via Serial or TCP Socket)
+      - SERIAL=/dev/ttyS0
+      - BAUD=38400
+      # - CONNECT=192.168.1.101:23
+    network_mode: bridge
+    devices:
+      - ${NX584SERIALPATH}:/dev/ttyS0
+  homebridge:
+    image: oznu/homebridge:#raspberry-pi  # use "raspberry-pi" instead of "latest" for arm devices
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=America/Chicago
+      - PGID=1000
+      - PUID=1000
+    volumes:
+      - ${HOMEBRIDGEPATH}:/homebridge
