@@ -5,7 +5,7 @@ services:
     container_name: pynx584
     build: 
       context: https://github.com/aficustree/pynx584.git#pluginWork:.docker
-    restart: always
+    restart: unless-stopped
     # uncomment volume if you wish to use plugin support
     volumes:
       - ${NX584PLUGINPATH}:/plugins
@@ -22,7 +22,7 @@ services:
   homebridge:
     container_name: homebridge
     image: oznu/homebridge:raspberry-pi  # use "raspberry-pi" instead of "latest" for arm devices
-    restart: always
+    restart: unless-stopped
     network_mode: host
     environment:
       - TZ=America/Chicago

@@ -1,6 +1,7 @@
 #!/bin/sh
 # run with env variable set to your PIN number
 
+echo $PIN
 export PIN=$PIN
 docker volume create homebridge
 docker volume create nx584plugins
@@ -30,4 +31,6 @@ else
   echo "Couldn't pull nx584ADPlugin, using existing"
 fi
 cat /var/lib/docker/volumes/homebridge/_data/config.json | jq --arg mypin "$PIN" '(.platforms[] | select (.platform == "alarmdecoder-platform").setPIN)=$mypin' | sponge /var/lib/docker/volumes/homebridge/_data/config.json
+cd ./interlogixDockerizedHomebridge
+docker-compose up -d --pull
 exit 0

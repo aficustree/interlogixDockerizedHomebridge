@@ -1,11 +1,10 @@
 [Unit]
 Description=Remote Autoupdater for Alarm System
-After=network-online.target firewalld.service
+After=network-online.target firewalld.service docker.service
 Wants=network-online.target
-Before=docker.service
+Requires=docker.service
 [Service]
 ExecStart=/usr/local/src/alarm/onetouch.sh
 StandardOutput=journal
 [Install]
 Alias=nx584autoupdater
-WantedBy=docker.service
