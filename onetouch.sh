@@ -41,4 +41,5 @@ cd ./interlogixDockerizedHomebridge
 docker-compose build pynx584
 docker-compose pull homebridge
 docker-compose up -d
+cd ..
 exit 0
