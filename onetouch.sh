@@ -32,5 +32,7 @@ else
 fi
 cat /var/lib/docker/volumes/homebridge/_data/config.json | jq --arg mypin "$PIN" '(.platforms[] | select (.platform == "alarmdecoder-platform").setPIN)=$mypin' | sponge /var/lib/docker/volumes/homebridge/_data/config.json
 cd ./interlogixDockerizedHomebridge
-docker-compose up -d --pull
+docker-compose build
+docker-compose pull
+docker-compose up -d
 exit 0
