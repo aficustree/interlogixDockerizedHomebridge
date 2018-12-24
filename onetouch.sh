@@ -1,7 +1,7 @@
 #!/bin/sh
 # run with env variable set to your PIN number
 
-echo "env vari is: "
+echo "env vari for PIN is: "
 echo $PIN
 export PIN=$PIN
 docker volume create homebridge
@@ -18,7 +18,7 @@ then
   then
     cp ./interlogixDockerizedHomebridge/onetouch.sh .
     chmod 755 onetouch.sh
-    exec onetouch.sh
+    exec ./onetouch.sh
   fi
   rm -rf /var/lib/docker/volumes/homebridge/_data/*
   mv ./interlogixDockerizedHomebridge/homebridge/* /var/lib/docker/volumes/homebridge/_data
