@@ -29,5 +29,5 @@ then
 else
   echo "Couldn't pull nx584ADPlugin, using existing"
 fi
-cat /var/lib/docker/volumes/homebridge/_data/config.json | jq --arg mypin "$PIN" '(.platforms[] | select (.platform == "alarmdecoder-platform").setPIN)=$mypin' | sponge /var/lib/docker/volumes/nx584plugins/_data/config.json 
+cat /var/lib/docker/volumes/homebridge/_data/config.json | jq --arg mypin "$PIN" '(.platforms[] | select (.platform == "alarmdecoder-platform").setPIN)=$mypin' | sponge /var/lib/docker/volumes/homebridge/_data/config.json
 exit 0
