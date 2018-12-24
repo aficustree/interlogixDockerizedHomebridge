@@ -12,8 +12,12 @@ if [ $? -eq 0 ]
 then
   rm -rf ./interlogixDockerizedHomebridge
   mv ./tmp ./interlogixDockerizedHomebridge
-  cp ./interlogixDockerizedHomebridge/onetouch.sh .
-  chmod 755 onetouch.sh
+  cmp -s ./interlogixDockerizedHomebridge/onetouch.sh ./onetouch.sh
+  if [ $? -eq 1 ]
+    cp ./interlogixDockerizedHomebridge/onetouch.sh .
+    chmod 755 onetouch.sh
+    exec onetouch.sh
+  fi
   rm -rf /var/lib/docker/volumes/homebridge/_data/*
   mv ./interlogixDockerizedHomebridge/homebridge/* /var/lib/docker/volumes/homebridge/_data
 else
@@ -32,7 +36,7 @@ else
 fi
 cat /var/lib/docker/volumes/homebridge/_data/config.json | jq --arg mypin "$PIN" '(.platforms[] | select (.platform == "alarmdecoder-platform").setPIN)=$mypin' | sponge /var/lib/docker/volumes/homebridge/_data/config.json
 cd ./interlogixDockerizedHomebridge
-docker-compose build
-docker-compose pull
+docker-compose build pynx584
+docker-compose pull homebridge
 docker-compose up -d
 exit 0
