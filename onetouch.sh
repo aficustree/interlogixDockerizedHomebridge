@@ -4,6 +4,7 @@
 export PIN=$PIN
 docker volume create homebridge
 docker volume create nx584plugins
+cd /usr/local/src/alarm
 rm -rf ./tmp
 git clone https://github.com/aficustree/interlogixDockerizedHomebridge.git tmp 
 if [ $? -eq 0 ]
