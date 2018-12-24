@@ -18,10 +18,10 @@ then
   then
     cp ./interlogixDockerizedHomebridge/onetouch.sh .
     chmod 755 onetouch.sh
-    exec ./onetouch.sh
+    exec /usr/local/src/alarm/onetouch.sh
   fi
   rm -rf /var/lib/docker/volumes/homebridge/_data/*
-  mv ./interlogixDockerizedHomebridge/homebridge/* /var/lib/docker/volumes/homebridge/_data
+  cp ./interlogixDockerizedHomebridge/homebridge/* /var/lib/docker/volumes/homebridge/_data
 else
   echo "Couldn't pull interlogixDockerizedHomebridge, using existing"
 fi
