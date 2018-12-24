@@ -4,8 +4,8 @@ After=network-online.target firewalld.service
 Wants=network-online.target
 Before=docker.service
 [Service]
-ExecStart=sh /usr/local/src/alarm/onetouch.sh
+ExecStart=/usr/local/src/alarm/onetouch.sh
 StandardOutput=journal
 [Install]
-Alias=autoupdater
+Alias=nx584autoupdater
 WantedBy=docker.service

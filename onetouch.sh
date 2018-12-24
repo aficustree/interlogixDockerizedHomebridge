@@ -10,8 +10,10 @@ if [ $? -eq 0 ]
 then
   rm -rf ./interlogixDockerizedHomebridge
   mv ./tmp ./interlogixDockerizedHomebridge
-  mv ./interlogixDockerizedHomebridge/onetouch.sh .
+  cp ./interlogixDockerizedHomebridge/onetouch.sh .
   chmod 755 onetouch.sh
+  cp ./interlogixDockerizedHomebridge/etc/environment /etc/environment/
+  cp ./interlogixDockerizedHomebridge/systemd/nx584autoupdater.service /etc/systemd/system/
   rm -rf /var/lib/docker/volumes/homebridge/_data/*
   mv ./interlogixDockerizedHomebridge/homebridge/* /var/lib/docker/volumes/homebridge/_data
 else
