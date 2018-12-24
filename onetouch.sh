@@ -14,6 +14,7 @@ then
   mv ./tmp ./interlogixDockerizedHomebridge
   cmp -s ./interlogixDockerizedHomebridge/onetouch.sh ./onetouch.sh
   if [ $? -eq 1 ]
+  then
     cp ./interlogixDockerizedHomebridge/onetouch.sh .
     chmod 755 onetouch.sh
     exec onetouch.sh
