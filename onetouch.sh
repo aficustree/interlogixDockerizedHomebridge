@@ -1,7 +1,7 @@
 #!/bin/sh
 # run with env variable set to your PIN number
 
-echo "env vari for PIN is: "
+echo "environment variable for PIN is: "
 echo $PIN
 export PIN=$PIN
 docker volume create homebridge
