@@ -1,9 +1,9 @@
 {
     "bridge": {
         "name": "Alarm Homebridge",
-        "username": "CD:22:3D:E3:CE:31",
+        "username": "CD:22:3D:E3:CE:39",
         "port": 51826,
-        "pin": "031-45-154"
+        "pin": "031-45-111"
     },
     
     "description": "This is an example configuration file for the alarmdecoder-platform configured for Interlogix.",
