@@ -20,8 +20,9 @@ then
     chmod 755 onetouch.sh
     exec /usr/local/src/alarm/onetouch.sh
   fi
-  rm -rf /var/lib/docker/volumes/homebridge/_data/*
-  cp ./interlogixDockerizedHomebridge/homebridge/* /var/lib/docker/volumes/homebridge/_data
+#  rm -rf /var/lib/docker/volumes/homebridge/_data/*
+  /bin/cp -f ./interlogixDockerizedHomebridge/homebridge/config.json /var/lib/docker/volumes/homebridge/_data/
+  /bin/cp -f ./interlogixDockerizedHomebridge/homebridge/startup.sh /var/lib/docker/volumes/homebridge/_data/
 else
   echo "Couldn't pull interlogixDockerizedHomebridge, using existing"
 fi
