@@ -9,12 +9,14 @@ services:
     # uncomment volume if you wish to use plugin support
     volumes:
       - ${NX584PLUGINPATH}:/plugins
+      - ${CONFIG_LOC}:/usr/local/etc/nx584/config.ini
     ports:
       - 5007:5007
     environment:
       # Uncomment these as needed, depending on how you connect to the panel (via Serial or TCP Socket)
       - SERIAL=/dev/ttyS0
       - BAUD=38400
+      - CONFIG_LOC=/usr/local/etc/nx584/config.ini
       # - CONNECT=192.168.1.101:23
     network_mode: bridge
     devices:
